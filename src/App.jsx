@@ -1,44 +1,42 @@
 import { useState } from 'react'
-import LandingPage from './components/LandingPage'
 import ChatGenerator from './components/ChatGenerator'
-import ContactPage from './components/ContactPage'
-import AboutPage from './components/AboutPage' // <--- Jangan lupa import
+import LandingPage from './components/LandingPage'
 
 function App() {
-  // State: 'landing', 'app', 'contact', 'about'
-  const [view, setView] = useState('landing')
+  const [isStarted, setIsStarted] = useState(false)
+
+  // 1. Fungsi buat tombol "Buat Chat Sekarang"
+  const handleStart = () => {
+    setIsStarted(true)
+  }
+
+  // 2. Fungsi buat tombol Menu (Fitur / Tentang / Kontak)
+  // Karena teks "daging"-nya ada di bawah, kita suruh dia scroll ke bawah 1 layar penuh
+  const handleScrollToContent = () => {
+    window.scrollTo({
+      top: window.innerHeight, // Scroll ke bawah sejauh tinggi layar monitor
+      behavior: 'smooth'       // Gerakannya halus (gak kaget)
+    })
+  }
 
   return (
-    <div className="overflow-hidden">
-      {view === 'landing' && (
-        <div className="animate-enter"> 
-          <LandingPage 
-            onStart={() => setView('app')} 
-            onContact={() => setView('contact')}
-            onAbout={() => setView('about')} // <--- Navigasi ke About
-          />
-        </div>
+    <>
+      {/* Logika Tampilan: */}
+      {!isStarted ? (
+        // Tampilkan Landing Page kalau belum mulai
+        <LandingPage 
+          onStart={handleStart}
+          
+          // Sambungin kabel tombol menu ke fungsi scroll tadi
+          onFeature={handleScrollToContent} 
+          onAbout={handleScrollToContent}
+          onContact={handleScrollToContent}
+        />
+      ) : (
+        // Tampilkan Aplikasi Chat kalau udah mulai
+        <ChatGenerator />
       )}
-      
-      {view === 'app' && (
-        <div className="animate-enter">
-          <ChatGenerator onBack={() => setView('landing')} />
-        </div>
-      )}
-
-      {view === 'contact' && (
-        <div className="animate-enter">
-          <ContactPage onBack={() => setView('landing')} />
-        </div>
-      )}
-
-      {/* HALAMAN TENTANG */}
-      {view === 'about' && (
-        <div className="animate-enter">
-          <AboutPage onBack={() => setView('landing')} />
-        </div>
-      )}
-    </div>
+    </>
   )
 }
 
