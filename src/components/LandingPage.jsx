@@ -45,17 +45,18 @@ const LandingPage = ({ onStart, onAbout, onFeature, onContact }) => {
       </main>
 
       {/* --- SEO CONTENT AREA (PENTING BUAT ADSENSE) --- */}
-      {/* Bagian ini berisi teks panjang agar Google menganggap web ini punya "Value" */}
       <section className="mt-24 max-w-4xl text-left bg-slate-800/50 p-8 rounded-3xl border border-white/5 shadow-2xl space-y-8">
         
-        <div>
+        {/* 🔥 ID ABOUT DITAMBAH DI SINI 🔥 */}
+        <div id="about" className="scroll-mt-24">
           <h3 className="text-2xl font-bold text-[#00c896] mb-3">Apa itu chatMIM?</h3>
           <p className="text-slate-300 leading-relaxed">
             chatMIM adalah <strong>Meme Chat Generator Online</strong> canggih yang memungkinkan Anda membuat tiruan percakapan WhatsApp Web yang sangat realistis. Tools ini dirancang khusus untuk konten kreator, marketer, dan penulis cerita (AU) yang membutuhkan visualisasi chat tanpa harus memiliki dua handphone. Dengan tampilan antarmuka (UI) terbaru yang mendukung Mode Gelap (Dark Mode) dan Mode Terang (Light Mode), hasil screenshot yang dihasilkan hampir tidak bisa dibedakan dari aslinya.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* 🔥 ID FEATURES DITAMBAH DI SINI 🔥 */}
+        <div id="features" className="grid md:grid-cols-2 gap-8 scroll-mt-24">
             <div>
                <h3 className="text-xl font-bold text-white mb-2">✨ Fitur Utama</h3>
                <ul className="list-disc list-inside text-slate-400 space-y-1">
@@ -88,7 +89,8 @@ const LandingPage = ({ onStart, onAbout, onFeature, onContact }) => {
       </section>
 
       {/* FOOTER */}
-      <footer className="mt-20 text-center text-slate-500 text-xs">
+      {/* 🔥 ID CONTACT DITAMBAH DI SINI 🔥 */}
+      <footer id="contact" className="mt-20 text-center text-slate-500 text-xs scroll-mt-10">
         <p>&copy; {new Date().getFullYear()} chatMIM Project. All Rights Reserved.</p>
         <p className="mt-2 opacity-50">Powered by llnproject.my.id</p>
       </footer>
