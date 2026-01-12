@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const LandingPage = ({ onStart, onAbout, onFeature, onContact }) => {
+// Landing Page sekarang tugasnya cuma jadi MENU UTAMA
+const LandingPage = ({ onStart, onAbout, onContact }) => {
+  
+  // Logic Fitur Unggulan (Tetap di sini / Accordion)
+  const [showFeatures, setShowFeatures] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex flex-col items-center justify-center p-6 font-sans text-white">
       
-      {/* HEADER SIMPLE */}
+      {/* HEADER */}
       <header className="absolute top-6 left-6 flex items-center gap-3 select-none animate-fade-in-down">
          <div className="w-11 h-11 bg-[#00c896] rounded-xl flex items-center justify-center shadow-lg transform hover:rotate-6 transition-transform">
             <span className="text-white font-bold text-3xl leading-none pb-[2px]">C</span>
@@ -14,7 +19,7 @@ const LandingPage = ({ onStart, onAbout, onFeature, onContact }) => {
          </h1>
       </header>
 
-      {/* HERO SECTION (Pancingan Utama) */}
+      {/* HERO SECTION */}
       <main className="text-center max-w-3xl space-y-8 mt-20 relative z-10">
         <div className="space-y-4 animate-fade-in-up">
            <span className="bg-white/10 text-[#00c896] px-4 py-1.5 rounded-full text-xs font-bold border border-white/10 uppercase tracking-wider inline-block mb-2">
@@ -37,60 +42,73 @@ const LandingPage = ({ onStart, onAbout, onFeature, onContact }) => {
         </button>
 
         {/* MENU LINK */}
-        <div className="flex justify-center gap-6 text-sm font-medium text-slate-400 mt-8">
-           <button onClick={onFeature} className="hover:text-[#00c896] transition-colors">Fitur Unggulan</button>
-           <button onClick={onAbout} className="hover:text-[#00c896] transition-colors">Tentang Kami</button>
-           <button onClick={onContact} className="hover:text-[#00c896] transition-colors">Kontak</button>
+        <div className="flex justify-center gap-6 text-sm font-medium text-slate-400 mt-8 select-none">
+           
+           {/* 1. Fitur Unggulan (Tetap Buka-Tutup di Sini) */}
+           <button 
+             onClick={() => setShowFeatures(!showFeatures)} 
+             className={`transition-colors flex items-center gap-1 cursor-pointer ${showFeatures ? 'text-[#00c896] font-bold' : 'hover:text-[#00c896]'}`}
+           >
+             Fitur Unggulan
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={`w-4 h-4 transition-transform ${showFeatures ? 'rotate-180' : ''}`}>
+               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+             </svg>
+           </button>
+
+           {/* 2. Tentang & Kontak (PINDAH HALAMAN / Panggil Props dari App.jsx) */}
+           <button onClick={onAbout} className="hover:text-[#00c896] transition-colors cursor-pointer">Tentang Kami</button>
+           <button onClick={onContact} className="hover:text-[#00c896] transition-colors cursor-pointer">Kontak</button>
         </div>
       </main>
 
-      {/* --- SEO CONTENT AREA (PENTING BUAT ADSENSE) --- */}
-      <section className="mt-24 max-w-4xl text-left bg-slate-800/50 p-8 rounded-3xl border border-white/5 shadow-2xl space-y-8">
+     {/* --- KONTEN --- */}
+      <section className="mt-16 max-w-4xl text-left bg-slate-800/50 p-8 rounded-3xl border border-white/5 shadow-2xl space-y-8 transition-all duration-300">
         
-        {/* 🔥 ID ABOUT DITAMBAH DI SINI 🔥 */}
+        {/* ID ABOUT (Target 1) */}
         <div id="about" className="scroll-mt-24">
           <h3 className="text-2xl font-bold text-[#00c896] mb-3">Apa itu chatMIM?</h3>
           <p className="text-slate-300 leading-relaxed">
-            chatMIM adalah <strong>Meme Chat Generator Online</strong> canggih yang memungkinkan Anda membuat tiruan percakapan WhatsApp Web yang sangat realistis. Tools ini dirancang khusus untuk konten kreator, marketer, dan penulis cerita (AU) yang membutuhkan visualisasi chat tanpa harus memiliki dua handphone. Dengan tampilan antarmuka (UI) terbaru yang mendukung Mode Gelap (Dark Mode) dan Mode Terang (Light Mode), hasil screenshot yang dihasilkan hampir tidak bisa dibedakan dari aslinya.
+            chatMIM adalah <strong>Meme Chat Generator Online</strong> canggih yang memungkinkan Anda membuat tiruan percakapan WhatsApp Web yang sangat realistis. Tools ini dirancang khusus untuk konten kreator, marketer, dan penulis cerita (AU).
           </p>
         </div>
 
-        {/* 🔥 ID FEATURES DITAMBAH DI SINI 🔥 */}
-        <div id="features" className="grid md:grid-cols-2 gap-8 scroll-mt-24">
-            <div>
-               <h3 className="text-xl font-bold text-white mb-2">✨ Fitur Utama</h3>
-               <ul className="list-disc list-inside text-slate-400 space-y-1">
-                 <li>Tampilan 99% Mirip WA Web Asli.</li>
-                 <li>Dukungan Emoji, Reply Chat, dan Gambar.</li>
-                 <li>Mode Baterai & Jam Custom.</li>
-                 <li>Download Kualitas HD.</li>
-                 <li>Tanpa Watermark & Gratis Selamanya.</li>
-               </ul>
-            </div>
-            <div>
-               <h3 className="text-xl font-bold text-white mb-2">💡 Kegunaan</h3>
-               <ul className="list-disc list-inside text-slate-400 space-y-1">
-                 <li>Bahan Konten TikTok / Reels / Shorts.</li>
-                 <li>Visualisasi Cerita Fiksi (AU Twitter).</li>
-                 <li>Mockup Testimoni Toko Online.</li>
-                 <li>Prank Teman atau Pacar.</li>
-                 <li>Kebutuhan Presentasi & Edukasi Digital.</li>
-               </ul>
-            </div>
-        </div>
+        {/* LOGIKA FITUR */}
+        {showFeatures && (
+          <div id="features" className="grid md:grid-cols-2 gap-8 scroll-mt-24 animate-fade-in-up">
+              <div>
+                 <h3 className="text-xl font-bold text-white mb-2">✨ Fitur Utama</h3>
+                 <ul className="list-disc list-inside text-slate-400 space-y-1">
+                   <li>Tampilan 99% Mirip WA Web Asli.</li>
+                   <li>Dukungan Emoji, Reply Chat, dan Gambar.</li>
+                   <li>Mode Baterai & Jam Custom.</li>
+                   <li>Download Kualitas HD.</li>
+                   <li>Tanpa Watermark & Gratis Selamanya.</li>
+                 </ul>
+              </div>
+              <div>
+                 <h3 className="text-xl font-bold text-white mb-2">💡 Kegunaan</h3>
+                 <ul className="list-disc list-inside text-slate-400 space-y-1">
+                   <li>Bahan Konten TikTok / Reels / Shorts.</li>
+                   <li>Visualisasi Cerita Fiksi (AU Twitter).</li>
+                   <li>Mockup Testimoni Toko Online.</li>
+                   <li>Prank Teman atau Pacar.</li>
+                 </ul>
+              </div>
+          </div>
+        )}
 
+        {/* Disclaimer */}
         <div>
            <h3 className="text-xl font-bold text-white mb-3">Disclaimer</h3>
            <p className="text-slate-400 text-sm italic border-l-4 border-yellow-500 pl-4 py-1 bg-yellow-500/10">
-             chatMIM dibuat hanya untuk tujuan hiburan dan kreatif. Pengembang tidak bertanggung jawab atas penyalahgunaan tools ini untuk tujuan penipuan (hoax), pemalsuan bukti hukum, atau tindakan ilegal lainnya. Gunakan dengan bijak.
+             chatMIM dibuat hanya untuk tujuan hiburan dan kreatif. Gunakan dengan bijak.
            </p>
         </div>
 
       </section>
 
-      {/* FOOTER */}
-      {/* 🔥 ID CONTACT DITAMBAH DI SINI 🔥 */}
-      <footer id="contact" className="mt-20 text-center text-slate-500 text-xs scroll-mt-10">
+      {/* ID CONTACT (Target 2) */}
+      <footer id="contact" className="mt-20 text-center text-slate-500 text-xs scroll-mt-10 pb-10">
         <p>&copy; {new Date().getFullYear()} chatMIM Project. All Rights Reserved.</p>
         <p className="mt-2 opacity-50">Powered by llnproject.my.id</p>
       </footer>
