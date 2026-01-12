@@ -1,90 +1,98 @@
-import React from 'react'
+import React from 'react';
 
-// Tambahkan prop 'onAbout' di sini
-const LandingPage = ({ onStart, onContact, onAbout }) => {
+const LandingPage = ({ onStart, onAbout, onFeature, onContact }) => {
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
-      {/* NAVBAR */}
-      <nav className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center text-white font-bold">C</div>
-          <h1 className="text-xl font-bold tracking-tight text-emerald-900">chatMIM</h1>
-        </div>
-        <div className="hidden md:flex gap-8 text-sm font-medium text-slate-500">
-          {/* Update Link Tentang */}
-          <a href="#" onClick={(e) => { e.preventDefault(); onAbout(); }} className="hover:text-emerald-600 transition">Tentang</a>
-          
-          <a href="#fitur" className="hover:text-emerald-600 transition">Fitur</a>
-          
-          {/* Link Kontak */}
-          <a href="#" onClick={(e) => { e.preventDefault(); onContact(); }} className="hover:text-emerald-600 transition">Kontak</a>
-        </div>
-        <button 
-          onClick={onStart}
-          className="bg-emerald-100 text-emerald-700 px-5 py-2 rounded-full text-sm font-bold hover:bg-emerald-200 transition"
-        >
-          Buka App
-        </button>
-      </nav>
-
-      {/* HERO SECTION */}
-      <header className="max-w-5xl mx-auto px-6 py-20 text-center">
-        <span className="inline-block py-1 px-3 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 text-xs font-bold mb-6 tracking-wide">
-          ✨ UPDATE TERBARU V33
-        </span>
-        <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 leading-tight mb-6">
-          Bikin Chat Meme <br/> <span className="text-emerald-500">Se-Realistis Aslinya.</span>
-        </h1>
-        <p className="text-lg md:text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
-          Tools pembuat konten percakapan (AU) terbaik untuk kreator. 
-          Support Dark Mode, Reply Chat, hingga Custom Warna Grup. Gratis tanpa login.
-        </p>
-        <div className="flex flex-col md:flex-row justify-center gap-4">
-          <button 
-            onClick={onStart}
-            className="px-8 py-4 bg-emerald-600 text-white rounded-full font-bold text-lg shadow-lg shadow-emerald-200 hover:bg-emerald-700 hover:scale-105 transition transform"
-          >
-            Mulai Buat Chat Sekarang 🚀
-          </button>
-          <button onClick={onAbout} className="px-8 py-4 bg-white border border-slate-200 text-slate-700 rounded-full font-bold text-lg hover:bg-slate-50 transition">
-            Tentang App
-          </button>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex flex-col items-center justify-center p-6 font-sans text-white">
+      
+      {/* HEADER SIMPLE */}
+      <header className="absolute top-6 left-6 flex items-center gap-3 select-none animate-fade-in-down">
+         <div className="w-11 h-11 bg-[#00c896] rounded-xl flex items-center justify-center shadow-lg transform hover:rotate-6 transition-transform">
+            <span className="text-white font-bold text-3xl leading-none pb-[2px]">C</span>
+         </div>
+         <h1 className="text-3xl font-bold text-white tracking-tight drop-shadow-md">
+            chatMIM
+         </h1>
       </header>
 
-      {/* FITUR SECTION */}
-      <section id="fitur" className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
-            <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-2xl mb-4">🎨</div>
-            <h3 className="text-xl font-bold mb-2">Tampilan Otentik</h3>
-            <p className="text-slate-500 text-sm leading-relaxed">
-              Ikon SVG asli, font presisi, dan layout yang 100% mirip dengan aplikasi aslinya. Tidak ada yang tahu ini palsu.
-            </p>
-          </div>
-          <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
-            <div className="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center text-2xl mb-4">🌙</div>
-            <h3 className="text-xl font-bold mb-2">Dark & Light Mode</h3>
-            <p className="text-slate-500 text-sm leading-relaxed">
-              Sesuaikan dengan tema kontenmu. Warna gelap yang nyaman di mata atau terang yang klasik.
-            </p>
-          </div>
-          <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
-            <div className="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center text-2xl mb-4">📸</div>
-            <h3 className="text-xl font-bold mb-2">Ekspor HD</h3>
-            <p className="text-slate-500 text-sm leading-relaxed">
-              Download hasil chat dalam format PNG resolusi tinggi. Tajam walaupun di-zoom berkali-kali.
-            </p>
-          </div>
+      {/* HERO SECTION (Pancingan Utama) */}
+      <main className="text-center max-w-3xl space-y-8 mt-20 relative z-10">
+        <div className="space-y-4 animate-fade-in-up">
+           <span className="bg-white/10 text-[#00c896] px-4 py-1.5 rounded-full text-xs font-bold border border-white/10 uppercase tracking-wider inline-block mb-2">
+             Tool Kebutuhan Konten Kreator
+           </span>
+           <h2 className="text-5xl md:text-7xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600 drop-shadow-sm">
+             Bikin Chat Meme <br/> <span className="text-white">Mirip Asli.</span>
+           </h2>
+           <p className="text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+             Generator Meme Chat WhatsApp Bahasa Indonesia. Buat screenshot percakapan palsu untuk konten hiburan, testimoni, atau materi edukasi tanpa perlu instal aplikasi. 100% Gratis & Privasi Aman.
+           </p>
         </div>
+
+        <button 
+          onClick={onStart}
+          className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-[#00a884] font-lg rounded-full hover:bg-[#008f6f] hover:scale-110 hover:shadow-[0_0_40px_-10px_rgba(0,168,132,0.7)] focus:outline-none ring-offset-2 focus:ring-2 ring-green-400"
+        >
+          <span className="mr-2 text-xl">✨</span> Buat Chat Sekarang
+          <svg className="w-5 h-5 ml-2 -mr-1 transition-transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+        </button>
+
+        {/* MENU LINK */}
+        <div className="flex justify-center gap-6 text-sm font-medium text-slate-400 mt-8">
+           <button onClick={onFeature} className="hover:text-[#00c896] transition-colors">Fitur Unggulan</button>
+           <button onClick={onAbout} className="hover:text-[#00c896] transition-colors">Tentang Kami</button>
+           <button onClick={onContact} className="hover:text-[#00c896] transition-colors">Kontak</button>
+        </div>
+      </main>
+
+      {/* --- SEO CONTENT AREA (PENTING BUAT ADSENSE) --- */}
+      {/* Bagian ini berisi teks panjang agar Google menganggap web ini punya "Value" */}
+      <section className="mt-24 max-w-4xl text-left bg-slate-800/50 p-8 rounded-3xl border border-white/5 shadow-2xl space-y-8">
+        
+        <div>
+          <h3 className="text-2xl font-bold text-[#00c896] mb-3">Apa itu chatMIM?</h3>
+          <p className="text-slate-300 leading-relaxed">
+            chatMIM adalah <strong>Meme Chat Generator Online</strong> canggih yang memungkinkan Anda membuat tiruan percakapan WhatsApp Web yang sangat realistis. Tools ini dirancang khusus untuk konten kreator, marketer, dan penulis cerita (AU) yang membutuhkan visualisasi chat tanpa harus memiliki dua handphone. Dengan tampilan antarmuka (UI) terbaru yang mendukung Mode Gelap (Dark Mode) dan Mode Terang (Light Mode), hasil screenshot yang dihasilkan hampir tidak bisa dibedakan dari aslinya.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+            <div>
+               <h3 className="text-xl font-bold text-white mb-2">✨ Fitur Utama</h3>
+               <ul className="list-disc list-inside text-slate-400 space-y-1">
+                 <li>Tampilan 99% Mirip WA Web Asli.</li>
+                 <li>Dukungan Emoji, Reply Chat, dan Gambar.</li>
+                 <li>Mode Baterai & Jam Custom.</li>
+                 <li>Download Kualitas HD.</li>
+                 <li>Tanpa Watermark & Gratis Selamanya.</li>
+               </ul>
+            </div>
+            <div>
+               <h3 className="text-xl font-bold text-white mb-2">💡 Kegunaan</h3>
+               <ul className="list-disc list-inside text-slate-400 space-y-1">
+                 <li>Bahan Konten TikTok / Reels / Shorts.</li>
+                 <li>Visualisasi Cerita Fiksi (AU Twitter).</li>
+                 <li>Mockup Testimoni Toko Online.</li>
+                 <li>Prank Teman atau Pacar.</li>
+                 <li>Kebutuhan Presentasi & Edukasi Digital.</li>
+               </ul>
+            </div>
+        </div>
+
+        <div>
+           <h3 className="text-xl font-bold text-white mb-3">Disclaimer</h3>
+           <p className="text-slate-400 text-sm italic border-l-4 border-yellow-500 pl-4 py-1 bg-yellow-500/10">
+             chatMIM dibuat hanya untuk tujuan hiburan dan kreatif. Pengembang tidak bertanggung jawab atas penyalahgunaan tools ini untuk tujuan penipuan (hoax), pemalsuan bukti hukum, atau tindakan ilegal lainnya. Gunakan dengan bijak.
+           </p>
+        </div>
+
       </section>
 
-      {/* FOOTER SIMPLE */}
-      <footer className="bg-white border-t border-slate-100 py-10 text-center">
-        <p className="text-slate-400 text-sm">
-          &copy; 2026 chatMIM Project. Dibuat dengan ☕ dan Kode.
-        </p>
+      {/* FOOTER */}
+      <footer className="mt-20 text-center text-slate-500 text-xs">
+        <p>&copy; {new Date().getFullYear()} chatMIM Project. All Rights Reserved.</p>
+        <p className="mt-2 opacity-50">Powered by llnproject.my.id</p>
       </footer>
+
     </div>
   )
 }
