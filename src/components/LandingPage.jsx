@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 // Landing Page sekarang tugasnya cuma jadi MENU UTAMA
-const LandingPage = ({ onStart, onAbout, onContact }) => {
+// Tambahkan onPrivacy di dalam kurung kurawal
+const LandingPage = ({ onStart, onAbout, onContact, onPrivacy }) => {
   
   // Logic Fitur Unggulan (Tetap di sini / Accordion)
   const [showFeatures, setShowFeatures] = useState(false);
