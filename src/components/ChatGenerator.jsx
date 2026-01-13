@@ -132,10 +132,8 @@ const ChatGenerator = ({ onBack }) => {
 
   const handleDownload = async () => {
     if (chatPreviewRef.current === null) return;
-    
+
     try {
-      // HAPUS 'cacheBust: true'
-      // Ganti jadi begini:
       const dataUrl = await toPng(chatPreviewRef.current, { 
           pixelRatio: 3 / previewScale,
           skipAutoScale: true, // Tambahin ini biar aman
@@ -145,11 +143,11 @@ const ChatGenerator = ({ onBack }) => {
       link.download = `chat-${contactName}.png`;
       link.href = dataUrl;
       link.click();
-    } catch (err) { 
+      } catch (err) { 
       console.error(err); // Biar kelihatan error aslinya di console
       alert("Gagal download: Ada gambar yang bermasalah."); 
-    }
-}
+      }
+  }
 
   const getBubbleColor = (isMe) => {
     if (mode === 'dark') return isMe ? 'bg-[#005c4b] text-[#e9edef]' : 'bg-[#202c33] text-[#e9edef]'
