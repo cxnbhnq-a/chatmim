@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage'
 // Pastikan path import ini sesuai sama lokasi file lu
 import AboutPage from './components/AboutPage'     
 import ContactPage from './components/ContactPage'
+import PrivacyPolicy from './PrivacyPolicy'
 
 function App() {
   // State sekarang bukan cuma true/false, tapi nama halaman
@@ -14,6 +15,7 @@ function App() {
   const goApp = () => setCurrentPage('app')
   const goAbout = () => setCurrentPage('about')
   const goContact = () => setCurrentPage('contact')
+  const goPrivacy = () => setCurrentPage('privacy')
 
   // --- RENDER HALAMAN SESUAI STATE ---
   const renderPage = () => {
@@ -23,7 +25,8 @@ function App() {
           <LandingPage 
             onStart={goApp}       // Tombol Mulai -> ke App
             onAbout={goAbout}     // Tombol Tentang -> ke Halaman About
-            onContact={goContact} // Tombol Kontak -> ke Halaman Contact
+            onContact={goContact}
+            onPrivacy={goPrivacy} // Tombol Kontak -> ke Halaman Contact
           />
         )
       case 'app':
@@ -34,6 +37,8 @@ function App() {
       case 'contact':
         // Jangan lupa kasih tombol back di ContactPage lu nanti
         return <ContactPage onBack={goHome} />
+      case 'privacy': // <--- 4. RENDER HALAMANNYA
+        return <PrivacyPolicy onBack={goHome} />
       default:
         return <LandingPage onStart={goApp} />
     }

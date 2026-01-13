@@ -108,9 +108,17 @@ const LandingPage = ({ onStart, onAbout, onContact }) => {
       </section>
 
       {/* ID CONTACT (Target 2) */}
-      <footer id="contact" className="mt-20 text-center text-slate-500 text-xs scroll-mt-10 pb-10">
-        <p>&copy; {new Date().getFullYear()} chatMIM Project. All Rights Reserved.</p>
-        <p className="mt-2 opacity-50">Powered by llnproject.my.id</p>
+      <footer className="mt-20 text-center text-slate-500 text-xs pb-10">
+          <p>&copy; {new Date().getFullYear()} chatMIM Project. All Rights Reserved.</p>
+          <p className="mt-2 opacity-50">Powered by llnproject.my.id</p>
+  
+     {/* Link Privacy Policy (WAJIB ADA) */}
+          <button 
+           onClick={onPrivacy} 
+           className="mt-4 text-slate-600 hover:text-[#00c896] underline decoration-slate-700 underline-offset-4 cursor-pointer"
+             >
+             Kebijakan Privasi
+          </button>
       </footer>
 
     </div>
