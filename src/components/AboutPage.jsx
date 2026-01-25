@@ -20,11 +20,11 @@ const AboutPage = ({ onBack }) => {
         {/* HERO SECTION */}
         <section className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">
-            Bikin Chat Palsu,<br/>
+            Bikin Meme Chat,<br/>
             <span className="text-emerald-500">Tanpa Ribet. Tanpa Jejak.</span>
           </h1>
           <p className="text-lg text-slate-500 leading-relaxed max-w-2xl mx-auto">
-            chatMIM adalah <i>Fake Chat Generator</i> berbasis web yang dirancang khusus untuk konten kreator, penulis AU (Alternate Universe), dan kebutuhan visual storytelling. Gratis, tanpa watermark, dan privasi terjaga.
+            chatMIM adalah <i>Chat Meme Generator</i> berbasis web yang dirancang khusus untuk konten kreator, penulis AU (Alternate Universe), dan kebutuhan visual storytelling. Gratis, tanpa watermark, dan privasi terjaga.
           </p>
         </section>
 
